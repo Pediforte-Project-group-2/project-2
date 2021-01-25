@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!--Link Materialize css-->
+    <link rel="stylesheet" href="../static/css/materialize.min.css">
+    <!--Link Fontawesome-->
+    <link rel="stylesheet" href="../static/fontawesome-5.15/css/all.min.css">
+    <style>
+.section-1{
+  margin-top:150px;
+}
+    </style>
+   
+</head>
+<body>
+<main>
+  <div class="container">
+    <div class="container">
+    <div class="card-panel section-1">
+        <h4 class="blue-text">Login</h4>
+        <form action="/login" method="POST">
+        <div class="row">
+        <div class="col s12">
+              <div class="input-field blue-theme">
+                <input placeholder="Username" type="text" class="materialize" name="name">
+              </div>
+            </div>
+            <div class="col s12">
+              <div class="input-field blue-theme">
+                <input placeholder="Your password" type="password" class="materialize" name='password'>
+              </div>
+            </div>
+            <div class="col s12">
+              <p>
+                <label>
+                  <input id="indeterminate-checkbox" type="checkbox" name="remember_me"
+                  />
+                  <span>Remember me</span>
+                </label>
+              </p>
+            </div>
+            <div class="col s12">
+              <button type="submit" class="btn blue">Login <i class="fa fa-send"></i></button>
+            </div>
+            <div class="col s12">
+              {%with messages= get_flashed_messages()%}
+              {%if messages%}
+              {% for message in messages%}
+              <b class="red-text">{{message}}</b>
+              {%endfor%}
+              {%endif%}
+              {%endwith%}
+          </div>
+            </div>
+          </form>
+    
+      </div>
+    </div>
+    </div>
+</main>
+
+
+   
+<script src="../static/js/jquery-3.5.1.min.js"></script>
+<script src="../static/js/materialize.min.js"></script>
+
+</body>
+</html>
