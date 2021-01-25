@@ -11,7 +11,7 @@ def check_login():
         name = request.cookies.get('name')
         password = request.cookies.get('password')
     if name is None or password is None:
-        return False
+        return None
 
     # verify User
     user = User.query.filter((User.name==name)&(User.password_hash == password)).first()
