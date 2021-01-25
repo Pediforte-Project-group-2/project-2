@@ -8,7 +8,11 @@
    <link rel="stylesheet" href="../static/css/materialize.min.css">
    <!--Link Fontawesome-->
    <link rel="stylesheet" href="../static/fontawesome-5.15/css/all.min.css">
-   
+   <style>
+        .links a:hover{
+        text-decoration: underline;
+      }
+   </style>
 </head>
 <body>
       <!-- start of nav bar-->
@@ -27,22 +31,43 @@
      </header>  
      <!--End of Nav bar-->
        
-        <main>
-            <h3 style="text-align: center;" >Welcome to your account {{name}}</h3>
-            <div class="row">
+        <main class="container">
+            <h3 class="green-text center">Welcome to your account, {{name}}</h3>
+           
+                {% if role == "Admin"%}
+                 <div class="row">
+                     <div class="col s4">
+                     <h4>Profile Menu</h4>
+                     <ul class="links">
+                    <li><a href="#">View all student profiles</a></li>
+                    <li><a href="#">Log out</a></li>
+                     </ul>
+                     </div>
+                     <div class="col s12">
+                         <h4>Create Sudent Profile</h4>
+                         <div class="card-panel">
+                             <div class="row">
+                                 
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                {%else%}
+                <div class="row">
                 <div class="col s3">
                     <h4>Profile Menu</h4>
-                    <ul>
+                   <ul class="links">
                         <li><a href="">Profile Page</a></li>
                         <li> <a href="">Bio Data Information</a></li>
                         <li> <a href="">Register Courses</a></li>
                         <li> <a href="">Check Results</a></li>
                         <li> <a href="">Reports</a></li>
-                        <li> <a href="">Sign Out</a></li>
+                        <li> <a href="">Log out</a></li>
                     </ul>
                 </div>
-            <div class="col s6">
+            <div class="col s12">
                 <h4>Student Details</h4>
+                <div class="card-panel">
                 <ul>
                     <li>Registration Number :</li>
                     <li>Full Name :</li>
@@ -56,12 +81,11 @@
                     <li>Department :</li>
                     <li>Faculty :</li>
                 </ul>
-            <div class="col s3">
-                <p> <img src="" alt=""> </p>
-
             </div>
-
-            </div>
+        </div>
+                </div>
+            {%endif%}
+          
 
         </main>
 
