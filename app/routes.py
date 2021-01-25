@@ -3,13 +3,21 @@ from app import app,db,models
 from app.models import User
 import hashlib
 from app.my_func import check_login
-
-
+import datetime
+date= datetime.datetime.now()
+day = date.strftime("%a")
+day1 = date.strftime('%d')
+year = date.year
+month =  date.strftime("%b")
+H = date.strftime('%H')
+Min = date.strftime('%M')
+Sec = date.strftime('%S')
+Today= "{} {} {} {}, {}:{}:{}".format(day,month,day1,year,H,Min,Sec)
 
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html',date= Today)
 
 @app.route('/login', methods=['POST','GET'])
 def login():
