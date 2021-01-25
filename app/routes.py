@@ -84,4 +84,15 @@ def signup():
 
 @app.route('/dashboard')
 def dashboard():
-    return render_template('dashboard.html')
+    logged_in = True
+    if 'name' in session:
+       name = session['name']
+       password = session['password']
+    else:
+        name = request.cookies.get('name')
+        password = request.cookies.get('password')
+        if name is None or email is None:
+            logged_in = False
+    #check if a student or Admin is logged in
+    user = User.query.filter((User.name==name)&(User.password_hash == password)).first()
+    return render_template('dashboard.html',name=user.name,role=user.role)
