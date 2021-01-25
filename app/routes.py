@@ -104,3 +104,12 @@ def dashboard():
     #check if a student or Admin is logged in
     user = User.query.filter((User.name==name)&(User.password_hash == password)).first()
     return render_template('dashboard.html',name=user.name,role=user.role)
+
+@app.route('/logout')
+def logout():
+    session.pop('name',None)
+    session.pop('password',None)
+    resp = redirect(url_for('index'))
+    resp.set_cookie('name','')
+    resp.set_cookie('password','',expires=0)
+    return resp
