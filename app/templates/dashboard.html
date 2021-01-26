@@ -46,6 +46,7 @@
                 <h2 class="blue-text center">
                     <i class="fas fa-user-friends"></i>KIG University student list
                 </h2>
+                {%if len > 0 %}
                 <table class="striped">
                     <thead>
                         <tr>
@@ -58,9 +59,9 @@
                             <th>Delete</th>
                         </tr>
                     </thead>
-                    <tbody> {% for student in students %} <tr>
+                   <tbody> {% for student in students %} <tr>
                             <td>{{student.id}}</td>
-                            <td><a href="#">{{student.name}}</a></td>
+                            <td><a href="/admin/view/{{student.id}}">{{student.name}}</a></td>
                             <td>{{student.matric}}</td>
                             <td>{{student.gender}}</td>
                             <td><i class="fas fa-calendar-day"></i> {{student.registered}}</td>
@@ -69,6 +70,9 @@
                                         class="fa fa-trash red-text"></i></a> </td>
                         </tr> {% endfor %} </tbody>
                 </table>
+                {%else%}
+                <h2 class="grey-text">NO STUDENT ACCOUNT IN ACTIVE</h2>
+                {%endif%}
                 <br><br> {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %} <b
                     class="green-text">{{message}}</b> {% endfor %} {% endif %} {% endwith %}
             </div>
