@@ -116,9 +116,10 @@ def dashboard():
         }
         students.append(item_dict)
     #Student template
+    length= len(students)
     user = User.query.filter((User.name==name)&(User.password_hash == password)).first()
     info= Info.query.filter(Info.user_id==user.id).first()
-    return render_template('dashboard.html',user=user,students=students,info=info)
+    return render_template('dashboard.html',user=user,students=students,info=info,len=length)
 
 
 @app.route('/logout')
@@ -186,4 +187,15 @@ def delete(id):
         db.session.delete(info)
         db.session.commit()
         flash('{}\'s account was deleted'.format(user.name))
+        return redirect(url_for('dashboard'))
+
+
+@app.route('/admin/view/<id>')
+def view(id):
+    user = User.query.filter(User.id==id).first()
+    info = Info.query.filter(Info.user_id==id).first()
+    if user is not None and info is not None:
+        return render_template('admin.html',user=user,info=info)
+    else:
+        flash("Student not found!!")
         return redirect(url_for('dashboard'))
