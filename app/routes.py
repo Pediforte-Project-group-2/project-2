@@ -117,3 +117,7 @@ def logout():
 @app.route('/admin/view-profiles')
 def admin():
     return render_template("admin.html")
+ 
+@app.route('/extra')
+def extra():
+    return render_template('extra.html')
