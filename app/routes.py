@@ -113,3 +113,7 @@ def logout():
     resp.set_cookie('name','')
     resp.set_cookie('password','',expires=0)
     return resp
+
+@app.route('/admin')
+def admin():
+    return render_template("admin.html")
