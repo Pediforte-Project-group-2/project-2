@@ -184,10 +184,15 @@ def delete(id):
     info = Info.query.filter(Info.user_id==id).first()
     if user is not None:
         db.session.delete(user)
-        db.session.delete(info)
+        if info is not None:
+            db.session.delete(info)
         db.session.commit()
         flash('{}\'s account was deleted'.format(user.name))
         return redirect(url_for('dashboard'))
+    else:
+        flash("Account not Found!!")
+        return redirect(url_for('dashboard'))
+
 
 
 @app.route('/admin/view/<id>')
