@@ -1,6 +1,6 @@
 from flask import render_template, request, flash,session, redirect, url_for
 from app import app,db,models
-from app.models import User
+from app.models import User,Info
 import hashlib
 from app.my_func import check_login
 import datetime
@@ -74,7 +74,7 @@ def signup():
             if name =='' or phone =='' or matric =='' or password =='' or c_password =='':
                 flash("Fill in empty input fields!")
                 return render_template('signup.html')
-            if c-password != password:
+            if c_password != password:
                 flash("password does not match!")
                 return render_template('signup.html')
         # Signup success
@@ -83,7 +83,7 @@ def signup():
         db.session.add(user)
         db.session.commit()
         flash('Registration sucessful')
-        return render_template('student.html')
+        return redirect(url_for('login'))
 
 
        
@@ -92,18 +92,34 @@ def signup():
 
 @app.route('/dashboard')
 def dashboard():
+    #check if a student or Admin is logged in
     logged_in = True
     if 'name' in session:
-       name = session['name']
-       password = session['password']
+        name = session['name']
+        password = session['password']
     else:
         name = request.cookies.get('name')
         password = request.cookies.get('password')
-        if name is None or email is None:
+        if name is None or password is None:
             logged_in = False
-    #check if a student or Admin is logged in
+            return redirect(url_for('login'))
+    # Admin template
+    student_obj= User.query.filter(User.role =="Student").all()
+    students=[]
+    for item in student_obj:
+        item_dict = {
+        'name': item.name,
+        'matric':item.matric,
+        'gender':item.gender,
+        'registered': item.reqistered,
+        'id':item.id
+        }
+        students.append(item_dict)
+    #Student template
     user = User.query.filter((User.name==name)&(User.password_hash == password)).first()
-    return render_template('dashboard.html',name=user.name,role=user.role)
+    info= Info.query.filter(Info.user_id==user.id).first()
+    return render_template('dashboard.html',user=user,students=students,info=info)
+
 
 @app.route('/logout')
 def logout():
@@ -114,10 +130,60 @@ def logout():
     resp.set_cookie('password','',expires=0)
     return resp
 
-@app.route('/admin/view-profiles')
-def admin():
-    return render_template("admin.html")
+   
  
 @app.route('/extra')
 def extra():
     return render_template('extra.html')
+
+
+
+
+@app.route('/student/register/<id>' ,methods=['POST','GET'])
+def student(id):
+    user = User.query.filter(User.id==id).first()
+    if  request.method=='GET':
+        if user is not None:
+            return render_template('student.html',user=user)
+    else:
+        user = User.query.filter(User.id==id).first()
+        info_1 = user.id
+        info_2 = request.form['dob']
+        info_3 = request.form['nation']
+        info_4 = request.form['place']
+        info_5 = request.form['origin']
+        info_6= request.form['state']
+        info_7 = request.form['status']
+        info_8 = request.form['religion']
+        info_9 = request.form['address']
+        info_10 = request.form['kin']
+        info_11 = request.form['kin address']
+        info_12 = request.form['kin no']
+        info_13 = request.form['ex uni']
+        info_14 = request.form['program']
+        info_15 = request.form['mode']
+        info_16 = request.form['qualification']
+        info_17 = request.form['award']
+        info_18 = request.form['study']
+        info_19 = request.form['faculty']
+        info_20 = request.form['department']
+        info_21 = request.form['duration']
+        info_22 = request.form['health']
+        info_23 = request.form['kin relationship']
+        info = Info(user_id=info_1,DOB=info_2,nationality=info_3,POB=info_4,POO=info_5,state=info_6,M_S=info_7,religion=info_8,address=info_9,kin=info_10,kin_address=info_11,previous_uni=info_13,program=info_14,mode=info_15,qualification=info_16,award=info_17,study=info_18,faculty=info_19,department=info_20,duration=info_21,health=info_22,kin_relationship=info_23,kin_no=info_12)
+        db.session.add(info)
+        db.session.commit()
+        flash("Update Successful")
+        return redirect(url_for('dashboard'))
+
+
+@app.route('/student-profile/delete/<id>')
+def delete(id):
+    user = User.query.filter(User.id==id).first()
+    info = User.query.filter(info.user_id==id).first()
+    if user is not None:
+        db.session.delete(user)
+        db.session.delete(info)
+        db.session.commit()
+        flash('{}\'s account was deleted'.format(user.name))
+        return redirect(url_for('dashboard'))
