@@ -83,7 +83,7 @@ def signup():
         db.session.add(user)
         db.session.commit()
         flash('Registration sucessful')
-        return redirect(url_for('index'))
+        return render_template('student.html')
 
 
        
@@ -114,6 +114,6 @@ def logout():
     resp.set_cookie('password','',expires=0)
     return resp
 
-@app.route('/admin')
+@app.route('/admin/view-profiles')
 def admin():
     return render_template("admin.html")
