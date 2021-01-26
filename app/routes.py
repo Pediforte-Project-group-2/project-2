@@ -180,7 +180,7 @@ def student(id):
 @app.route('/student-profile/delete/<id>')
 def delete(id):
     user = User.query.filter(User.id==id).first()
-    info = User.query.filter(info.user_id==id).first()
+    info = Info.query.filter(Info.user_id==id).first()
     if user is not None:
         db.session.delete(user)
         db.session.delete(info)
