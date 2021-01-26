@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Create Student Profile</title>
    <!--Link Materialize css-->
    <link rel="stylesheet" href="../static/css/materialize.min.css">
    <!--Link Fontawesome-->
@@ -33,9 +33,9 @@ margin-top:50px;
      <!--End of Nav bar-->
 
      <main>
-         <div class="container">
-             <center><h4>Bio-Data Form</h4></center>
-             <div class="card-panel section-1">
+         <div class="container section-1">
+             <h4 class="center blue-text">Bio-Data Form</h4>
+             <div class="card-panel ">
                  <form action="">
                     <div class="row">
                         <div class="col s12">
@@ -174,7 +174,7 @@ margin-top:50px;
                             
                                
                                 <div class="col s12">
-                                  <button type="submit" class="btn blue">Submit <i class="fa fa-send"></i></button>
+                                  <button type="submit" class="btn blue">Submit <i class="far fa-paper-plane"></i></button>
                                 </div>
                                 <div class="col s12">
                                     {%with messages= get_flashed_messages()%}

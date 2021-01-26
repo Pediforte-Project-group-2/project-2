@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>your page</title>
+    <title>View Students Profiles</title>
     <!--Link Materialize css-->
     <link rel="stylesheet" href="../static/css/materialize.min.css">
     <!--Link Fontawesome-->
@@ -31,8 +31,8 @@
     <div class= 'container'>
         <div>
            
-            <h2>
-                <center class="blue-text"><i class="fas fa-user-friends"></i>KIG University student list</center> 
+            <h2 class="blue-text center">
+                <i class="fas fa-user-friends"></i>KIG University student list
             </h2>
         </div>
         <div>
@@ -62,7 +62,7 @@
             {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for message in messages %}
-                <b style="color:green;">{{message}}</b>
+                <b class="green-text">{{message}}</b>
                 {% endfor %}
             {% endif %}
         {% endwith %}
