@@ -38,6 +38,7 @@ margin-top:50px;
      <main>
          <div class="container section-1">
              <h4 class="center blue-text">Bio-Data Form --{{user.name}}</h4>
+             {%if info == "nil"%}
              <div class="card-panel ">
                  <form action="/student/register/{{user.id}}" method = 'POST'>
                    <div class="row">
@@ -178,6 +179,148 @@ margin-top:50px;
                    </div>
                  </form>
              </div>
+             {%else%}
+             <div class="card-panel ">
+                <form action="/student/register/{{user.id}}" method = 'POST'>
+                  <div class="row">
+                   <div class="col s6">
+                       <div class="row">
+                          <div class="col s12">
+                               <div class="input-field blue-theme">
+                                 <input placeholder="Date of birth" type="text" class="datepicker materialize" name="dob" value={{info.DOB}}>
+                               </div>
+                           </div>
+                           <div class="col s12">
+                               <div class="input-field blue-theme">
+                                   <input placeholder="Nationality" type="text" class="materialize" name="nation" value={{info.nationality}}>
+                               </div>
+                           </div>
+                           <div class="col s12">
+                               <div class="input-field blue-theme">
+                                 <input placeholder="Place of birth" type="text" class="materialize" name="place" value={{info.POB}}>
+                               </div>
+                           </div>
+                           <div class="col s12">
+                               <div class="input-field blue-theme">
+                                   <input placeholder="Place of origin" type="text" class="materialize" name="origin" value={{info.POO}}>
+                               </div>
+                           </div>
+                           <div class="col s12">
+                               <div class="input-field blue-theme">
+                                 <input placeholder="State/LGA" type="text" class="materialize" name="state" value={{info.state}}>
+                               </div>
+                           </div>
+                           <div class="col s12">
+                               <div class="input-field blue-theme">
+                                   <input placeholder="Marital staus" type="text" class="materialize" name="status" value={{info.M_S}}>
+                               </div>
+                           </div>
+                       <div class="col s12">
+                               <div class="input-field blue-theme">
+                                 <input placeholder="Religion" type="text" class="materialize" name="religion" value={{info.religion}}>
+                               </div>
+                           </div>
+                           <div class="col s12">
+                               <div class="input-field blue-theme">
+                                   <input placeholder="Permanent Home Address" type="text" class="materialize" name="address" value={{info.address}}>
+                               </div>
+                           </div>
+                           <div class="col s12">
+                               <div class="input-field blue-theme">
+                                 <input placeholder="Next of Kin Name" type="text" class="materialize" name="kin" value={{info.kin}}>
+                               </div>
+                           </div>
+                 
+                   <div class="col s12">
+                       <div class="input-field blue-theme">
+                           <input placeholder="Next of Kin Phone no" type="text" class="materialize" name="kin no" value={{info.kin_no}}>
+                       </div>
+                   </div>
+                   <div class="col s12">
+                       <div class="input-field blue-theme">
+                         <input placeholder="if transfer, state previous University" type="text" class="materialize" name="ex uni" value={{info.previous_uni}}>
+                       </div>
+                   </div>
+             
+               </div>
+               </div>
+               <div class="col s6">
+                   <div class="row">
+                   <div class="col s12">
+                       <div class="input-field blue-theme">
+                           <input placeholder="Programme Type" type="text" class="materialize" name="program" value={{info.program}}>
+                       </div>
+                   </div>
+                   <div class="col s12">
+                       <div class="input-field blue-theme">
+                         <input placeholder="Mode of Entry" type="text" class="materialize" name="mode" value={{info.mode}}>
+                       </div>
+                   </div>
+                   <div class="col s12">
+                       <div class="input-field blue-theme">
+                           <input placeholder="Highest qualification" type="text" class="materialize" name="qualification" value={{info.qualification}}>
+                       </div>
+                   </div>
+                   <div class="col s12">
+                       <div class="input-field blue-theme">
+                         <input placeholder="Award in view" type="text" class="materialize" name="award" value={{info.award}}>
+                       </div>
+                   </div>
+                   <div class="col s12">
+                       <div class="input-field blue-theme">
+                           <input placeholder="Mode of Study" type="text" class="materialize" name="study" value={{info.study}}>
+                       </div>
+                   </div>
+                   <div class="col s12">
+                       <div class="input-field blue-theme">
+                         <input placeholder="Faculty" type="text" class="materialize" name="faculty" value={{info.faculty}}>
+                       </div>
+                   </div>
+                   <div class="col s12">
+                       <div class="input-field blue-theme">
+                           <input placeholder="Department" type="text" class="materialize" name="department" value={{info.department}}>
+                       </div>
+                   </div>
+                   <div class="col s12">
+                       <div class="input-field blue-theme">
+                         <input placeholder="Duration" type="text" class="materialize" name="duration" value={{info.duration}}>
+                       </div>
+                   </div>
+                   <div class="col s12">
+                       <div class="input-field blue-theme">
+                           <input placeholder="Health Status" type="text" class="materialize" name="health" value={{info.health}}>
+                       </div>
+                   </div>
+                   <div class="col s12">
+                       <div class="input-field blue-theme">
+                           <input placeholder="Next of Kin address" type="text" class="materialize" name="kin address" value={{info.kin_address}}>
+                       </div>
+                   </div>
+                   <div class="col s12">
+                       <div class="input-field blue-theme">
+                         <input placeholder="Next of kin Relationship" type="text" class="materialize" name="kin relationship" value={{info.kin_relationship}}>
+                       </div>
+                   </div>
+                  
+                  
+               </div>
+           </div>
+              <div class="col s12">
+                       <button type="submit" class="btn blue">Submit <i class="far fa-paper-plane"></i></button>
+                     </div>
+                     <div class="col s12">
+                       {%with messages= get_flashed_messages()%}
+                       {%if messages%}
+                       {% for message in messages%}
+                       <b class="red-text">{{message}}</b>
+                       {%endfor%}
+                       {%endif%}
+                       {%endwith%}
+                   </div>
+                  </div>
+                </form>
+            </div>
+             {%endif%}
          </div>
      </main>
 

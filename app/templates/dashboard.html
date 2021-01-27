@@ -73,8 +73,9 @@
                 {%else%}
                 <h2 class="grey-text">NO STUDENT ACCOUNT IN ACTIVE</h2>
                 {%endif%}
-                <br><br> {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %} <b
-                    class="green-text">{{message}}</b> {% endfor %} {% endif %} {% endwith %}
+                <p>
+            {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %} <b
+                    class="green-text">{{message}}</b> {% endfor %} {% endif %} {% endwith %}</p>
             </div>
         </div>
         </div> {%else%} 
@@ -84,11 +85,15 @@
                 <ul class="links">
                     <li><a href="">Profile Page</a></li>
                     <li> <a href="/student/register/{{user.id}}">Update Bio Data</a></li>
-                    <li> <a href="">Register Courses</a></li>
                     <li> <a href="">Check Results</a></li>
                     <li> <a href="">Reports</a></li>
                     <li> <a href="/logout">Log out</a></li>
                 </ul>
+            </div>
+            <div class="col s12">
+                <p>
+                    {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %} <b
+                            class="green-text">{{message}}</b> {% endfor %} {% endif %} {% endwith %}</p>
             </div>
             <div class="col s12">
                 <h4>Student Details</h4>
@@ -103,13 +108,14 @@
                         <li><b>Place of Birth:</b> {{info.POB}}</li>
                         <li><b>Place of Origin:</b> {{info.POO}}</li>
                         <li><b>State/Local Government:</b> {{info.state}}</li>
+                        <li><b>Nationality:</b> {{info.nationality}}</li>
                         <li><b>Marital Status:</b> {{info.M_S}}</li>
                         <li><b>Religion:</b> {{info.religion}}</li>
                         <li><b>Permanent Home Address:</b> {{info.address}}</li>
                         <li><b>Next of Kin:</b> {{info.kin}}</li>
                         <li><b>Address of Next of Kin:</b> {{info.kin_address}}</li>
                         <li><b>Next of Kin Phone No:</b> {{info.kin_no}}</li>
-                        <li><b>Relationship with Next of Kin:</b> {{kin_relationship}}</li>
+                        <li><b>Relationship with Next of Kin:</b> {{info.kin_relationship}}</li>
                         <li><b>Previous University:</b> {{info.previous_uni}}</li>
                         <li><b>Program:</b> {{info.program}}</li>
                         <li><b>Mode of Entry:</b> {{info.mode}}</li>
