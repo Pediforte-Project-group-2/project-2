@@ -17,7 +17,19 @@ Today= "{} {} {} {}, {}:{}:{}".format(day,month,day1,year,H,Min,Sec)
 
 @app.route('/')
 def index():
-    return render_template('index.html',date= Today)
+    logged_in = True
+    if 'name' in session:
+        name = session['name']
+        password = session['password']
+        return redirect(url_for('dashboard'))
+    else:
+        name = request.cookies.get('name')
+        password = request.cookies.get('password')
+        if name is None or password is None:
+            logged_in = False
+            return render_template('index.html',date= Today)
+        return redirect(url_for('dashboard'))
+
 
 @app.route('/login', methods=['POST','GET'])
 def login():
@@ -38,8 +50,6 @@ def login():
                 flash('Invalid username or  password')
                 return render_template('login.html')
             else:
-                session['name']= user.name
-                session['password']= user.password_hash
                 resp = redirect(url_for('dashboard'))
                 resp.set_cookie('name',user.name)
                 resp.set_cookie('password',user.password_hash)
@@ -143,9 +153,12 @@ def extra():
 @app.route('/student/register/<id>' ,methods=['POST','GET'])
 def student(id):
     user = User.query.filter(User.id==id).first()
+    info = Info.query.filter(Info.user_id==id).first()
+    if info is None:
+        info="nil"
     if  request.method=='GET':
         if user is not None:
-            return render_template('student.html',user=user)
+            return render_template('student.html',user=user,info=info)
     else:
         user = User.query.filter(User.id==id).first()
         info_1 = user.id
@@ -171,10 +184,34 @@ def student(id):
         info_21 = request.form['duration']
         info_22 = request.form['health']
         info_23 = request.form['kin relationship']
-        info = Info(user_id=info_1,DOB=info_2,nationality=info_3,POB=info_4,POO=info_5,state=info_6,M_S=info_7,religion=info_8,address=info_9,kin=info_10,kin_address=info_11,previous_uni=info_13,program=info_14,mode=info_15,qualification=info_16,award=info_17,study=info_18,faculty=info_19,department=info_20,duration=info_21,health=info_22,kin_relationship=info_23,kin_no=info_12)
-        db.session.add(info)
+        if info =="nil":
+            info = Info(user_id=info_1,DOB=info_2,nationality=info_3,POB=info_4,POO=info_5,state=info_6,M_S=info_7,religion=info_8,address=info_9,kin=info_10,kin_address=info_11,previous_uni=info_13,program=info_14,mode=info_15,qualification=info_16,award=info_17,study=info_18,faculty=info_19,department=info_20,duration=info_21,health=info_22,kin_relationship=info_23,kin_no=info_12)
+            db.session.add(info)
+        else:
+             info.DOB=info_2
+             info.nationality=info_3
+             info.POB=info_4
+             info.POO=info_5
+             info.state=info_6
+             info.M_S=info_7
+             info.religion=info_8
+             info.address=info_9
+             info.kin=info_10
+             info.kin_address=info_11
+             info.previous_uni=info_13
+             info.program=info_14
+             info.mode=info_15
+             info.qualification=info_16
+             info.award=info_17
+             info.study=info_18
+             info.faculty=info_19
+             info.department=info_20
+             info.duration=info_21
+             info.health=info_22
+             info.kin_relationship=info_23
+             info.kin_no=info_12
         db.session.commit()
-        flash("Update Successful")
+        flash("Biodata updated Successful")
         return redirect(url_for('dashboard'))
 
 
@@ -204,3 +241,5 @@ def view(id):
     else:
         flash("Student not found!!")
         return redirect(url_for('dashboard'))
+
+
