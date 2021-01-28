@@ -26,7 +26,7 @@ margin-top:50px;
                    <a id="logo-container" href="#" class="brand-logo">KIG</a>
                    <ul class="right hide-on-med-and-down">
                      <li><a href="#">Home</a></li>
-                     <li><a href="#">Students Login </a></li>
+                     <li><a href="/login">Students Login </a></li>
                      <li><a href="#">About us</a></li>
                      <li><a href="#">FAQs</a></li>
                     </ul>
@@ -36,7 +36,21 @@ margin-top:50px;
      <!--End of Nav bar-->
 
      <main>
+         <div class="container">
+            <div class="row">
+                <div class="col s3">
+                    <h4>Profile Menu</h4>
+                    <ul class="links">
+                        <li><a href="/dashboard">Profile Page</a></li>
+                        <li> <a href="/student/register/{{user.id}}">Update Bio Data</a></li>
+                        <li> <a href="">Check Results</a></li>
+                        <li> <a href="">Reports</a></li>
+                        <li> <a href="/logout">Log out</a></li>
+                    </ul>
+                </div>
+         </div>
          <div class="container section-1">
+             
              <h4 class="center blue-text">Bio-Data Form --{{user.name}}</h4>
              {%if info == "nil"%}
              <div class="card-panel ">
