@@ -65,7 +65,7 @@
                             <td>{{student.matric}}</td>
                             <td>{{student.gender}}</td>
                             <td><i class="fas fa-calendar-day"></i> {{student.registered}}</td>
-                            <td><a href="#"><i class="fa fa-edit green-text"></i></a> </td>
+                            <td><a href="/student-profile/edit/{{student.id}}"><i class="fa fa-edit green-text"></i></a> </td>
                             <td><a href="/student-profile/delete/{{student.id}}"><i
                                         class="fa fa-trash red-text"></i></a> </td>
                         </tr> {% endfor %} </tbody>

@@ -242,4 +242,27 @@ def view(id):
         flash("Student not found!!")
         return redirect(url_for('dashboard'))
 
+@app.route('/student-profile/edit/<id>',methods=['GET','POST'])
+def edit(id):
+    user = User.query.filter(User.id==id).first()
+    if request.method=='GET' and  user is not None:
+        return render_template('edit.html',user=user)
+    elif  request.method=='POST':
+        name = request.form['name']
+        email = request.form['email']
+        phone = request.form['phone']
+        matric = request.form['matric_num']
+        gender = request.form['gender']
+        user.name=name
+        user.email=email
+        user.phone=phone
+        user.matric=matric
+        user.gender=gender
+        db.session.commit()
+        flash("{}'s profile was updated sucessful".format(user.name))
+        return redirect(url_for('dashboard'))
+    else:
+        flash("Account not Found!!")
+        return redirect(url_for('dashboard'))
+
 
