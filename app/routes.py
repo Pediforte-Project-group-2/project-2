@@ -246,7 +246,7 @@ def view(id):
 def edit(id):
     user = User.query.filter(User.id==id).first()
     if request.method=='GET' and  user is not None:
-        return render_template('edit.html',user=user)
+        return render_template('edit.html', user=user)
     elif  request.method=='POST':
         name = request.form['name']
         email = request.form['email']
