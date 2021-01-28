@@ -10,11 +10,19 @@
      <link rel="stylesheet" href="../static/fontawesome-5.15/css/all.min.css">
      <link rel="stylesheet"  href="{{url_for('static',filename='css/materialize.min.css')}}">
      <link rel="stylesheet"  href="{{url_for('static',filename='fontawesome-5.15/css/all.min.css')}}">
+     <style>
+       .bg{
+ background:url("{{url_for('static',filename='img/stration6.jpg')}}");
+ background-position: center;
+ background-size: contain;
+ background-repeat: no-repeat;
+}
+     </style>
 </head>
 <body>
     <div class="container">
         <div class="container">
-          <div class="card-panel section-1">
+          <div class="card-panel section-1 bg">
               <h4 class="blue-text">Update {{user.name}}'s Profile</h4>
               <form action="/student-profile/edit/{{user.id}}" method="POST">
               <div class="row">

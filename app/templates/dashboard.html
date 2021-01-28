@@ -13,41 +13,60 @@
         .links a:hover {
             text-decoration: underline;
         }
+        .background-img{
+            position: absolute;
+            top:0;
+            left:250px;
+        }
+        .bg{
+    background:url("{{url_for('static',filename='img/stration8.jpg')}}");
+ background-position: right;
+ background-size: contain;
+ background-repeat: no-repeat
+}
     </style>
 </head>
 
 <body>
     <!-- start of nav bar-->
     <header>
-        <nav class="black">
+        <nav class="transparent">
             <div class="container">
-                <a id="logo-container" href="#" class="brand-logo">KIG</a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/login">Students Login </a></li>
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">FAQs</a></li>
+                <a id="logo-container" href="#" class="brand-logo blue-text">KIG</a>
+                <ul class="right hide-on-med-and-down ">
+                    <li><a href="/" class="blue-text">Home</a></li>
+                    <li><a href="/login" class="blue-text">Students Login </a></li>
+                    <li><a href="#" class="blue-text">About us</a></li>
+                    <li><a href="#" class="blue-text">FAQs</a></li>
                 </ul>
             </div>
         </nav>
+        <div class="center">
+            <img src="../static/img/Illustration.jpg" style="z-index:-1" class='background-img'>
+        </div>
     </header>
     <!--End of Nav bar-->
+    
     <main class="container">
-        <h3 class="green-text center">Welcome to your account, {{user.name}}</h3> {% if user.role == "Admin"%} <div
-            class="row">
-            <div class="col s4">
+        <div class="row">
+          {% if user.role == "Admin"%} 
+          <div class="col s12">
+            <h5 class="blue-text text-darken-2 right">Welcome to your account, <b>{{user.name}}</b> <img src="../static/img/Illustration3.png" height=35px width=auto></h5>
+        </div>
+            <div class="col s3 z-depth-1">
+                
                 <h4>Profile Menu</h4>
                 <ul class="links">
                     <li><a href="/signup">Register student profile</a></li>
                     <li><a href="/logout">Log out</a></li>
                 </ul>
             </div>
-            <div class="col s12">
+            <div class="col s12" style="margin-top:160px;">
                 <h2 class="blue-text center">
                     <i class="fas fa-user-friends"></i>KIG University student list
                 </h2>
                 {%if len > 0 %}
-                <table class="striped">
+                <table class="striped z-depth-1">
                     <thead>
                         <tr>
                             <th>Id</th>
@@ -64,7 +83,7 @@
                             <td><a href="/admin/view/{{student.id}}">{{student.name}}</a></td>
                             <td>{{student.matric}}</td>
                             <td>{{student.gender}}</td>
-                            <td><i class="fas fa-calendar-day"></i> {{student.registered}}</td>
+                            <td><i class="fas fa-calendar-day blue-text"></i> {{student.registered}}</td>
                             <td><a href="/student-profile/edit/{{student.id}}"><i class="fa fa-edit green-text"></i></a> </td>
                             <td><a href="/student-profile/delete/{{student.id}}"><i
                                         class="fa fa-trash red-text"></i></a> </td>
@@ -78,9 +97,11 @@
                     class="green-text">{{message}}</b> {% endfor %} {% endif %} {% endwith %}</p>
             </div>
         </div>
-        </div> {%else%} 
-        <div class="row">
-            <div class="col s3">
+     {%else%} 
+     <div class="col s12">
+        <h5 class="blue-text text-darken-2 right">Welcome to your account, <b>{{user.name}}</b> <img src="../static/img/Illustration2.png" height=35px width=auto></h5>
+    </div>
+            <div class="col s3 z-depth-1">
                 <h4>Profile Menu</h4>
                 <ul class="links">
                     <li><a href="/dashboard">Profile Page</a></li>
@@ -95,9 +116,9 @@
                     {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %} <b
                             class="green-text">{{message}}</b> {% endfor %} {% endif %} {% endwith %}</p>
             </div>
-            <div class="col s12">
-                <h4>Student Details</h4>
-                <div class="card-panel">
+            <div class="col s12" style="margin-top:100px;">
+                <h4 class="blue-text text-darken-2">Student Details</h4>
+                <div class="card-panel bg">
                     <ul>
                         <li><b>Full Name:</b> {{user.name}}</li>
                         <li><b>Email:</b> {{user.email}}</li>

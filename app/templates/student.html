@@ -15,6 +15,12 @@
     .section-1{
 margin-top:50px;
 }
+.bg{
+    background:url("{{url_for('static',filename='img/stration7.jpg')}}");
+ background-position: right;
+ background-size: contain;
+ background-repeat: no-repeat
+}
   </style>
 
 </head>
@@ -53,7 +59,7 @@ margin-top:50px;
              
              <h4 class="center blue-text">Bio-Data Form --{{user.name}}</h4>
              {%if info == "nil"%}
-             <div class="card-panel ">
+             <div class="card-panel bg">
                  <form action="/student/register/{{user.id}}" method = 'POST'>
                    <div class="row">
                     <div class="col s6">
@@ -194,7 +200,7 @@ margin-top:50px;
                  </form>
              </div>
              {%else%}
-             <div class="card-panel ">
+             <div class="card-panel bg">
                 <form action="/student/register/{{user.id}}" method = 'POST'>
                   <div class="row">
                    <div class="col s6">
