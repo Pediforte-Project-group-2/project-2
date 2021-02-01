@@ -152,6 +152,20 @@ def extra():
 
 @app.route('/student/register/<id>' ,methods=['POST','GET'])
 def student(id):
+    logged_in = True
+    if 'name' in session:
+        name = session['name']
+        password = session['password']
+        if name!= 'Admin':
+            return redirect(url_for('logout'))
+    else:
+        name = request.cookies.get('name')
+        password = request.cookies.get('password')
+        if name is None or password is None:
+            logged_in = False
+            return redirect(url_for('login'))
+        elif name!= 'Admin':
+            return redirect(url_for('logout'))
     user = User.query.filter(User.id==id).first()
     info = Info.query.filter(Info.user_id==id).first()
     if info is None:
@@ -217,6 +231,20 @@ def student(id):
 
 @app.route('/student-profile/delete/<id>')
 def delete(id):
+    logged_in = True
+    if 'name' in session:
+        name = session['name']
+        password = session['password']
+        if name!= 'Admin':
+            return redirect(url_for('logout'))
+    else:
+        name = request.cookies.get('name')
+        password = request.cookies.get('password')
+        if name is None or password is None:
+            logged_in = False
+            return redirect(url_for('login'))
+        elif name!= 'Admin':
+            return redirect(url_for('logout'))
     user = User.query.filter(User.id==id).first()
     info = Info.query.filter(Info.user_id==id).first()
     if user is not None:
@@ -234,6 +262,20 @@ def delete(id):
 
 @app.route('/admin/view/<id>')
 def view(id):
+    logged_in = True
+    if 'name' in session:
+        name = session['name']
+        password = session['password']
+        if name!= 'Admin':
+            return redirect(url_for('logout'))
+    else:
+        name = request.cookies.get('name')
+        password = request.cookies.get('password')
+        if name is None or password is None:
+            logged_in = False
+            return redirect(url_for('login'))
+        elif name!= 'Admin':
+            return redirect(url_for('logout'))
     user = User.query.filter(User.id==id).first()
     info = Info.query.filter(Info.user_id==id).first()
     if user is not None and info is not None:
