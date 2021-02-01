@@ -156,16 +156,12 @@ def student(id):
     if 'name' in session:
         name = session['name']
         password = session['password']
-        if name!= 'Admin':
-            return redirect(url_for('logout'))
     else:
         name = request.cookies.get('name')
         password = request.cookies.get('password')
         if name is None or password is None:
             logged_in = False
             return redirect(url_for('login'))
-        elif name!= 'Admin':
-            return redirect(url_for('logout'))
     user = User.query.filter(User.id==id).first()
     info = Info.query.filter(Info.user_id==id).first()
     if info is None:
