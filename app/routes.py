@@ -282,6 +282,20 @@ def view(id):
 
 @app.route('/student-profile/edit/<id>',methods=['GET','POST'])
 def edit(id):
+    logged_in = True
+    if 'name' in session:
+        name = session['name']
+        password = session['password']
+        if name!= 'Admin':
+            return redirect(url_for('logout'))
+    else:
+        name = request.cookies.get('name')
+        password = request.cookies.get('password')
+        if name is None or password is None:
+            logged_in = False
+            return redirect(url_for('login'))
+        elif name!= 'Admin':
+            return redirect(url_for('logout'))
     user = User.query.filter(User.id==id).first()
     if request.method=='GET' and  user is not None:
         return render_template('edit.html', user=user)
