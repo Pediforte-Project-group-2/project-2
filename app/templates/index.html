@@ -17,6 +17,7 @@
     <header>
             <nav class="transparent z-depth-0">
               <div class="container">
+                <a href="#" class="sidenav-trigger" data-target="mobile-nav"><i class="fa fa-list"></i></a>
                   <a id="logo-container" href="#" class="brand-logo">KIG</a>
                   <ul class="right hide-on-med-and-down">
                     <li><a href="/">Home</a></li>
@@ -27,6 +28,14 @@
                    </ul>
                 </div>
               </nav>
+            <!--Side Nav-->
+            <ul class="sidenav" id="mobile-nav">
+              <li><a href="/about">About us</a></li>
+              <li><a href="/faq">FAQs</a></li>
+              <li><a href="/admission">Admission</a></li>
+              <li><a href="/login">Login</a></li>
+            </ul>
+            <!--End-->
           <div class="container section-3 white-text">
           <h3>  Welcome to KIG University</h3>
          <p>{{date}} GMT+0100 (Central European Standard Time)</p>
@@ -75,7 +84,7 @@
         </div>
       </div>
        </div>
-    <div class="row section-2">
+    <div class=" section-2">
       <div class="container">
         <div class="row">
             <div class="col s12 l6">
@@ -86,7 +95,7 @@
               <img src="../static/images/about.jpg" class="img"/>
             </div>
           </div>
-      </div>
+          </div>
     </div>
 
    
@@ -166,6 +175,10 @@
 
     <script src="../static/js/jquery-3.5.1.min.js"></script>
     <script src="../static/js/materialize.min.js"></script>
+    <script>
+       $(document).ready(function(){
+            $('.sidenav').sidenav();});
+    </script>
 
 </body>
 </html>
