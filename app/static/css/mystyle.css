@@ -1,10 +1,6 @@
 
 
-ul, li, ol {
-    margin: 0px;
-    padding: 0px;
-    list-style: none;
-}
+
 p {
     margin: 0px;
     font-weight: 300;
@@ -38,12 +34,7 @@ img {
 .links a:hover{
     text-decoration: underline;
   }
-.bg{
-    background:url("../static/img/stration5.jpg");
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-   }
+
 .section-1si{
     margin-top:50px;
   }
@@ -88,8 +79,8 @@ border-radius: 30px;
 
 
 .about .about-box a:hover{ 
-    background-color: #200769;
-    border: #200769 solid 1px;
+    background-color: skyblue;
+    border:skyblue solid 1px;
    color: #fff;
 }
 .about .about-box figure {
@@ -108,7 +99,7 @@ border-radius: 30px;
 /** end learn **/
 
 /** make **/
-.make {background: #200769; margin-top: 90px; padding: 50px 0px;}
+
 .make .titlepage {text-align: left; padding-bottom: 30px;}
 .white_colo {color: #fff;}
 .make_text p {color: #fff;}
