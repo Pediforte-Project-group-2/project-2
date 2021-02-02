@@ -8,32 +8,7 @@
     <link rel="stylesheet" href="../static/css/materialize.min.css">
     <!--Link Fontawesome-->
     <link rel="stylesheet" href="../static/fontawesome-5.15/css/all.min.css">
-    <style>
-      .content{
-        padding-top:1px;
-        padding-left:20px;
-        padding-bottom:1px;
-      }
-      .background-img{
-        position: absolute;
-        top:0
-      }
-      .section-1{
-        width:70%;
-        position: absolute;
-        top:450px;
-      }
-      .section-2{
-        margin-top:300px;
-      }
-      .section-3{
-        margin-top:150px;
-      }
-      .links a:hover{
-        text-decoration: underline;
-      }
-
-    </style>
+    <link rel="stylesheet" href='../static/css/mystyle.css'>
    
 </head>
 <body>
@@ -43,10 +18,11 @@
               <div class="container">
                   <a id="logo-container" href="#" class="brand-logo">KIG</a>
                   <ul class="right hide-on-med-and-down">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="/login">Students Login </a></li>
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">FAQs</a></li>
+                    <li><a href="/" class="blue-text">Home</a></li>
+                    <li><a href="/about" class="blue-text">About us</a></li>
+                    <li><a href="/faq" class="blue-text">FAQs</a></li>
+                    <li><a href="/admission" class="blue-text">Admission</a></li>
+                    <li><a href="/login" class="blue-text">login</a></li>
                    </ul>
                 </div>
               </nav>
@@ -104,16 +80,80 @@
         </div>
       </div>
     <div class="row section-2">
-      <div class="col s5">
-        <h5 class="green-text">Dear Student</h5>
-        <p>You are welcome to the University of KIG, the Premier University in Nigeria. I want to congratulate you on your admission into the 'First and Best' University. Please note that you will not be allowed to matriculate and therefore become a bona-fide student of this University, if you do not complete all the stipulated registration processes.</p>
+      <div class="about">
+          <div class="row">
+            <div class="col xl6 col l6 col m6 col s12">
+              <div class="about-box">
+                <h2><strong>Dear Student</strong></h2>
+                <p> You are welcome to the University of KIG, the Premier University in Nigeria. I want to congratulate you on your admission into the 'First and Best' University. Please note that you will not be allowed to matriculate and therefore become a bona-fide student of this University, if you do not complete all the stipulated registration processes. </p>
+              </div>
+            </div>
+            <div class="col xl6 col l6 col m6 col s12">
+              <div class="about-box">
+                <figure><img src="../static/images/about.jpg" alt="#" /></figure>
+              </div>
+            </div>
+          </div>
+      
+        
+      </div>
+      
+      </div>
+
+    <!-- learn -->
+
+
+<div class="learn">
+ 
+    <div class="row">
+      <div class="col m12">
+        <div class="titlepage">
+          <h2>Learn <strong>the Practical way</strong></h2>
+          <span>packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</span>
+        </div>
+      </div>
     </div>
-      </ddiv>
+    <div class="row">
+      <div class="col m12">
+        <div class="learn_box">
+          <figure><img src="../static/images/img.jpg" alt="img"/></figure>
+        </div>
+      </div>
+    </div>
+
+</div>
+<!-- MAKE --> 
+<div class="make">
+  <div class="container">
+    <div class="row">
+      <div class="col m12">
+        <div class="titlepage">
+          <h2>Make Your <strong>Courses Standout</strong></h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col xl5 col l5 col m5 col s12">
+        <div class="make_text">
+          <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. 
+          </p>
+        </div>
+      </div>
+      <div class="col xl5 col l5 col s5 col s12">
+        <div class="make_img">
+          <figure><img src="../static/images/make_img.jpg"></figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end MAKE --> 
+<!-- end learn --> 
     
 
     </main>
     <!-- end of  main content--> 
-    
+    <br>
 
 
     <!-- start of  footer -->  

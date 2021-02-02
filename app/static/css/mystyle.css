@@ -1,0 +1,140 @@
+
+
+ul, li, ol {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+p {
+    margin: 0px;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 24px;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+.content{
+    padding-top:1px;
+    padding-left:20px;
+    padding-bottom:1px;
+  }
+.background-img{
+    position: absolute;
+    top:0
+  }
+.section-1{
+    width:70%;
+    position: absolute;
+    top:450px;
+  }
+.section-2{
+    margin-top:300px;
+  }
+.section-3{
+    margin-top:150px;
+  }
+.links a:hover{
+    text-decoration: underline;
+  }
+.bg{
+    background:url("../static/img/stration5.jpg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+   }
+.section-1si{
+    margin-top:50px;
+  }
+/** about section **/
+.about {
+    background-color: #fff;
+    padding-top: 90px;
+    
+}
+.about .about-box {
+   text-align: left;
+   
+}
+.about .about-box h2 {
+    padding: 0;
+    font-weight: bold;
+    color: #f4b328;
+    line-height: 50px;
+    font-size: 50px;
+
+}
+.about .about-box p {
+    font-size: 17px;
+    line-height: 28px;
+    color: #000;
+    padding: 40px 0px;
+}
+
+.about .about-box a {
+    font-size: 16px;
+border: #f4b328 solid 1px;
+background-color: #f4b328;
+color: #fff;
+padding: 9px 0px;
+max-width: 171px;
+width: 100%;
+display: inline-block;
+text-align: center;
+text-transform: uppercase;
+border-radius: 30px;
+}
+
+
+.about .about-box a:hover{ 
+    background-color: #200769;
+    border: #200769 solid 1px;
+   color: #fff;
+}
+.about .about-box figure {
+    margin: 0;
+}
+.about .about-box figure img {
+   width: 100%;
+}
+/** end about section **/
+
+/** learn **/
+.learn {background: #fff; padding-top: 90px;}
+.learn .titlepage {text-align: left;}
+.learn .learn_box figure {margin: 0px;}
+.learn .learn_box figure img {width: 100%;}
+/** end learn **/
+
+/** make **/
+.make {background: #200769; margin-top: 90px; padding: 50px 0px;}
+.make .titlepage {text-align: left; padding-bottom: 30px;}
+.white_colo {color: #fff;}
+.make_text p {color: #fff;}
+
+.make_text a {
+    font-size: 16px;
+border: #fff solid 1px;
+background-color: #fff;
+color: #200769;
+padding: 9px 0px;
+max-width: 171px;
+width: 100%;
+display: inline-block;
+text-align: center;
+text-transform: uppercase;
+border-radius: 30px;
+float: left;
+margin-top: 20px;
+}
+ .make_text a:hover {
+     background-color: #f4b328;
+     border: #f4b328 solid 1px;
+     color: #fff;
+}
+
+
+.make_img figure {margin: 0px;}
+
+/** end make **/

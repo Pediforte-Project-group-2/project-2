@@ -1,29 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup</title>
-      <!--Link Materialize css-->
-      <link rel="stylesheet" href="../static/css/materialize.min.css">
-      <!--Link Fontawesome-->
-      <link rel="stylesheet" href="../static/fontawesome-5.15/css/all.min.css">
-      <style>
-        .section-1{
-  margin-top:50px;
-}
-.bg{
- background:url("../static/img/stration5.jpg");
- background-position: center;
- background-size: contain;
- background-repeat: no-repeat;
-}
-      </style>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Signup</title> 
+{% endblock %}
+
+{% block body %}
   <div class="container">
       <div class="container">
-        <div class="card-panel section-1 bg">
+        <div class="card-panel section-1si bg">
             <h4 class="blue-text">Student Profile</h4>
             <form action="/signup" method="POST">
             <div class="row">
@@ -95,13 +79,4 @@
           </div>
       </div>
   </div>
-    
-<script src="../static/js/jquery-3.5.1.min.js"></script>
-<script src="../static/js/materialize.min.js"></script>
-<script>
-  $(document).ready(function(){
-      $('select').formSelect();
-  });
-</script>
-</body>
-</html>
+{% endblock %}   

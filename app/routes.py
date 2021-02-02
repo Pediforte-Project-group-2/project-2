@@ -303,4 +303,16 @@ def edit(id):
         flash("Account not Found!!")
         return redirect(url_for('dashboard'))
 
+@app.route('/admission')
+def admission():
+    return render_template('admission.html')
+
+@app.route('/faq')
+def faq():
+    return render_template('faq.html')
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 
