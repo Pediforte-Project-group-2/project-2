@@ -1,10 +1,27 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup</title>
+  <!--Link Materialize css-->
+  <link rel="stylesheet" href="../static/css/materialize.min.css">
+  <!--Link Fontawesome-->
+  <link rel="stylesheet" href="../static/fontawesome-5.15/css/all.min.css">
+</head>
+<body>
+  <!--navbar-->
+  <nav class="transparent">
+    <div class="container">
+        <a id="logo-container" href="#" class="brand-logo blue-text">KIG</a>
+        <ul class="right hide-on-med-and-down ">
+            <li><a href="/" class="blue-text">Home</a></li>
+            <li><a href="#" class="blue-text">About us</a></li>
+            <li><a href="#" class="blue-text">FAQs</a></li>
+        </ul>
+    </div>
+</nav>
 
-{% block head %}
-<title>Signup</title> 
-{% endblock %}
-
-{% block body %}
   <div class="container">
       <div class="container">
         <div class="card-panel section-1si">
@@ -79,4 +96,14 @@
           </div>
       </div>
   </div>
-{% endblock %}   
+
+
+  <script src="../static/js/jquery-3.5.1.min.js"></script>
+  <script src="../static/js/materialize.min.js"></script>
+  <script>
+      $(document).ready(function () {
+          $('select').formSelect();
+      });
+  </script>
+</body>
+</html>
