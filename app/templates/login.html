@@ -6,17 +6,17 @@
 
 {% block body %}
     <div class="container">
-    <div class="card-panel section-1si">
-        <h4 class="purple-text ">Login</h4>
+    <div class="card-panel z-depth-0">
+        <h4 class="blue-text ">Login</h4>
         <form action="/login" method="POST">
         <div class="row">
         <div class="col s12">
-              <div class="input-field purple-theme">
+              <div class="input-field blue-theme">
                 <input placeholder="Username" type="text" class="materialize" name="name">
               </div>
             </div>
             <div class="col s12">
-              <div class="input-field purple-theme">
+              <div class="input-field blue-theme">
                 <input placeholder="Your password" type="password" class="materialize" name='password'>
               </div>
             </div>
@@ -30,7 +30,7 @@
               </p>
             </div>
             <div class="col s12">
-              <button type="submit" class="btn purple">Login <i class="fa fa-send"></i></button>
+              <button type="submit" class="btn blue">Login <i class="fa fa-send"></i></button>
             </div>
             <div class="col s12">
               {%with messages= get_flashed_messages()%}
