@@ -34,19 +34,7 @@ def index():
 @app.route('/login', methods=['POST','GET'])
 def login():
     if request.method=="GET":
-        logged_in = True
-        if 'name' in session:
-            name = session['name']
-            password = session['password']
-            return redirect(url_for('dashboard'))
-        else:
-            name = request.cookies.get('name')
-            password = request.cookies.get('password')
-            if name is None or password is None:
-                logged_in = False
-                return render_template('index.html',date= Today)
-            return redirect(url_for('dashboard'))
-        return render_template('login.html') 
+       return render_template('login.html') 
     else:
         name = request.form['name']
         password = request.form['password']
@@ -57,6 +45,7 @@ def login():
             password_h = hashlib.sha256(password.encode()).hexdigest()
             session['name']= name
             session['password']= password_h
+            session['logged_in']= True
             user = check_login()
             if user is None:
                 flash('Invalid username or  password')
@@ -148,6 +137,7 @@ def dashboard():
 def logout():
     session.pop('name',None)
     session.pop('password',None)
+    session.pop('logged_in',None)
     resp = redirect(url_for('index'))
     resp.set_cookie('name','')
     resp.set_cookie('password','',expires=0)
