@@ -22,7 +22,10 @@
                     <li><a href="/about" class="blue-text">About us</a></li>
                     <li><a href="/faq" class="blue-text">FAQs</a></li>
                     <li><a href="/admission" class="blue-text">Admission</a></li>
+                    {%if 'logged_in' in session%}
+                    {%else%}
                     <li><a href="/login" class="blue-text">Login</a></li>
+                    {%endif%}
                 </ul>
             </div>
         </nav>
