@@ -34,6 +34,18 @@ def index():
 @app.route('/login', methods=['POST','GET'])
 def login():
     if request.method=="GET":
+        logged_in = True
+        if 'name' in session:
+            name = session['name']
+            password = session['password']
+            return redirect(url_for('dashboard'))
+        else:
+            name = request.cookies.get('name')
+            password = request.cookies.get('password')
+            if name is None or password is None:
+                logged_in = False
+                return render_template('index.html',date= Today)
+            return redirect(url_for('dashboard'))
         return render_template('login.html') 
     else:
         name = request.form['name']
