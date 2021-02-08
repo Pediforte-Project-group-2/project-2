@@ -39,7 +39,7 @@ def login():
         name = request.form['name']
         password = request.form['password']
         if name=='' or password =='':
-            flash("Fill in empty input fields")
+            flash("Please enter your username and password!")
             return render_template('login.html')
         else:
             password_h = hashlib.sha256(password.encode()).hexdigest()
