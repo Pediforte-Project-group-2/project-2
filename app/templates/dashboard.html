@@ -81,9 +81,20 @@
                             <td>{{student.gender}}</td>
                             <td><i class="fas fa-calendar-day blue-text"></i> {{student.registered}}</td>
                             <td><a href="/student-profile/edit/{{student.id}}"><i class="fa fa-edit green-text"></i></a> </td>
-                            <td><a href="/student-profile/delete/{{student.id}}"><i
-                                        class="fa fa-trash red-text"></i></a> </td>
-                        </tr> {% endfor %} </tbody>
+                            <td><a href="#delete{{student.id}}"class="modal-trigger"><i class="fa fa-trash red-text"></i></a> </td>
+                        </tr>
+                             <!--Pop up-->
+                             <div class="modal" id="delete{{student.id}}" style="width:500px">
+                                <div class="modal-content">
+                                    <h5 class="red-text">Delete Notice!</h5>
+                                  <p>Are you sure you want to delete {{student.name}}'s account ?</p>
+                                </div>
+                                <div class="modal-footer">
+                                  <a href="/student-profile/delete/{{student.id}}" class=" btn crimson"> Accept</a>
+                                  <a href="#cancel" class="modal-close btn green"> Cancel </a>
+                                </div>
+                              </div>
+                      {% endfor %} </tbody>
                 </table>
                 {%else%}
                 <h2 class="grey-text">NO STUDENT ACCOUNT IN ACTIVE</h2>
@@ -183,8 +194,10 @@
     <script>
         $(document).ready(function () {
             $('select').formSelect();
+            $('.modal').modal();
         });
     </script>
+    
 </body>
 
 </html>
